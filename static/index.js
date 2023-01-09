@@ -61,7 +61,7 @@ let locarr = [];
             await axios.get('https://maps.googleapis.com/maps/api/geocode/json?', {
         params: {
           address: city,
-          key: 'AIzaSyD18_HhGTqXn5kwKR7h8Ovd-id_7UeVEys'
+          key: 'Add API KEY'
         }
       })
       .then(function(response){
