@@ -14,8 +14,4 @@ The project is done using Golang, HTML, CSS  and Javascript.
 From the main page, search for artist name and click on the artist image to show more infomation about the artist which include the location of the concerts.
 
 
-## Contributors
-Adrain L, Christain C, Tosin I
-
-## Sponsors
-Project done for Gritlab2022
+## Oluwatosin I ##
