@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Artist</title>
+  <link rel="stylesheet" href="/static/style.css">
+  <link rel="icon" href="https://scipython.com/static/media/uploads/blog/ascii-art/saturn-ascii-i.png">
+  <script src="/static/index.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  
+  <section class="info">
+  <a href="/" >&#10229; Back to home</a>
+  <h1 class="text-center">
+    {{.Name}}
+  </h1>
+  <img class="center" src="{{.Image}}" alt="{{.Name}}"/>
+  
+  <h2>Members</h2>
+  <ul>{{range .Members}}
+    <li>{{.}}</li>
+    {{end}}
+  </ul>
+  
+  <h2>Creation Date</h2>
+  <p>{{.CreationDate}}</p>
+  <h2>First Album</h2>
+  <p>{{.FirstAlbum}}</p>
+  <h2>Location and Dates</h2>
+    <ul>{{range $city, $date := .DatesLocations}}
+        {{range $date := $date}}
+        <li class="placemark">{{$city}}:  {{$date}}</li>
+      {{end}}
+      {{end}}
+    </ul>
+  </section>
+
+  <section class="mapInfo">
+    <div id="map"></div>
+  </section>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD18_HhGTqXn5kwKR7h8Ovd-id_7UeVEys&callback=initMap">
+    defer
+</script>
+  
+<footer style="position:relative; bottom:-350px">
+  <p>Project: Groupie-Tracker Contributors: Adrain, Christian, Tosin</p>
+  <p>copyright: @gritlab2022</p>
+</footer>
+</body>
+</html>

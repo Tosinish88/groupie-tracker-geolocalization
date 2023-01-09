@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/style.css">
+    <title>Groupie-Tracker</title>
+    <link rel="icon" href="https://scipython.com/static/media/uploads/blog/ascii-art/saturn-ascii-i.png">
+    <script src="/static/index.js"></script>
+</head>
+<body>
+    <script>
+        var xdata = `{{range .}}
+                      {{$Iden := .Id}}
+                      {{$namemem := .Name}}
+                      <option value={{.Name}}> Artist/Band</option>
+                  {{range .Members}}
+                      <option value="{{.}}">{{$namemem}} - Member</option>
+                  {{end}}
+                  {{range $key, $value := .DatesLocations}}
+                          <option value="{{$key}}">{{$namemem}} - Location</option>
+                  {{end}}
+                  <option value={{.CreationDate}}>{{.Name}} - Creation Date</option>
+                  <option value={{.FirstAlbum}}>{{.Name}} - First Album Release Date</option>
+                  {{end}}`;
+    </script>
+    <h1 class="text-center">Welcome to Groupie-Tracker Website</h1>
+        <div class="text-center mb-5 pb-5"> 
+                <input id="myInput" type="text" placeholder="search..." onkeyup="filterImage()" size="50" list="character" oninput="completeDataList(event)">
+                <datalist class="listdata" id="character">
+                    
+                </datalist>    
+                <br>
+                <br>
+                <p class="searchInfo">Search for Artists Informations</p> 
+        </div>
+        <h3>Enjoy some music while you surf the main page</h3>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/561jH07mF1jHuk7KlaeF0s?utm_source=generator" allow="autoplay; encrypted-media" loading="lazy" ></iframe>
+        <div class="row" id="cards"  style="min-height:1200px">
+            {{range .}}
+            <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 text-center my-3">
+                <div class="header">
+                    <div class="filterDiv Name">{{.Name}}</div>
+                    <div class="filterDiv Members">{{.Members}}</div>
+                    <div class="filterDiv CreationDate">{{.CreationDate}}</div>
+                    <div class="filterDiv FirstAlbumDate">{{.FirstAlbum}}</div>
+                    <div class="filterDiv DatesLocations">{{.DatesLocations}}</div>
+            </div>
+
+            <!-- container for name and image display with href -->
+            <div class="container" id="info">
+                <h2>{{.Name}}</h2>
+                <a href="/artists/{{.Id}}">
+                <img src="{{.Image}}" class="card margin-auto" alt="{{.Name}}" style="width: 15rem;">
+                </a>
+                <option value="{{.Name}}"></option>
+            </div>
+            </div>
+            {{end}}
+        </div>
+    <footer style="position:relative; bottom: auto;">
+    <p>Project: Groupie-Tracker Contributors: Adrain, Christian, Tosin</p>
+    <p>copyright: @gritlab2022</p>
+    </footer>
+</body>
+</html>
